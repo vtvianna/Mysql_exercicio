@@ -1,0 +1,41 @@
+-- nome e peso de todas as cadelas
+select * from pet
+	where sexo = 'F' and especie = 'cachorro';
+
+-- nome do pet e do respectivo tutor para calopsitas, cachorros e tartarugas
+
+select nome, tutor from pet
+	where especie in ('calopsita', 'cachorro', 'tartaruga');
+
+-- hamsters nascidos em 2021
+
+select * from pet
+	where especie = 'hamster' and dt_nascimento like '2021%';
+
+-- gatos nascidos no segundo semestre de qualquer ano
+
+select * from pet 
+		where especie ='gato' and extract (month from dt_nascimento) > 6;
+
+-- gatos nascidos no segundo semestre de qualquer ano
+
+select * from pet
+where especie ='gato' and month(dt_nascimento) > 6;
+						
+
+-- peso da cobra mais pesada
+
+select * from pet
+	where especie = 'cobra'
+    order by peso desc
+    limit 1;
+
+-- todos os pets ainda vivos
+
+select * from pet
+	where dt_morte is null;
+
+-- todos os pets sem um tutor
+
+select * from pet 
+	where tutor is null;
